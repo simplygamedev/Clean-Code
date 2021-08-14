@@ -17,11 +17,12 @@ public class Main{
 	
 	public static void UseExceptionsRatherThanReturnCodes() {
 		
-		DeviceHandle.addDefaultHandle("DEV1");
+		DeviceController.addHandleWithRecord("DEV1", new DeviceRecord("Record1","Record2"));
 		
-		DeviceHandle handle = DeviceHandle.getHandle("DEV1");
-		DeviceRecord record = handle.retrieveDeviceRecord();
+		DeviceRecord record = DeviceController.getDeviceRecord("DEV1");
 		
-		System.out.printf("Record1: %s\nRecord2: %s", record.record1, record.record2);
+		System.out.printf("\nRecord1: %s, Record2: %s", record.record1, record.record2);
+		
+		DeviceController.sendShutDown("DEV1");
 	}
 }
